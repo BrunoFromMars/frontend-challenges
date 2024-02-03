@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  AppContainer,
-  BookCoverWrapper,
-  BooksContainer,
-  BooksListContainer,
-  ReadingListBookWrapper,
-  ReadingListContainer,
-  ReadingListWrapper,
-  StyledHr,
-  TitleDiv,
-} from "./App.styled";
 import { Book, initailBooksList } from "./books";
-import { BookCover } from "./BookCover/BookCover";
+import "./App.css";
+import { BooksListContainer } from "./BooksListCotainer";
+import { ReadingListContainer } from "./ReadingListContainer";
 
 const App: React.FC = () => {
   const [booksList, setBooksList] = React.useState<Book[]>(initailBooksList);
@@ -24,46 +15,26 @@ const App: React.FC = () => {
     setReadingList((previousList) => [...previousList, book]);
   };
 
+  const handlereadingListClick = (book: Book) => {
+    setReadingList((previousList) =>
+      previousList.filter((previousBook) => previousBook.id !== book.id)
+    );
+    setBooksList((previousList) => [...previousList, book]);
+  };
+
   return (
-    <AppContainer>
-      <BooksContainer>
+    <div className="app-container">
+      <div className="books-container">
         <BooksListContainer
-          layout
-          layoutId="bookslistcontainer"
-          transition={{ duration: 0.5 }}
-        >
-          {booksList.map((book) => (
-            <BookCoverWrapper
-              key={book.id}
-              onClick={() => handlebookListClick(book)}
-              layoutId={book.id}
-              transition={{ duration: 0.5 }}
-            >
-              <BookCover book={book} />
-            </BookCoverWrapper>
-          ))}
-        </BooksListContainer>
-        {readingList.length > 0 && (
-          <ReadingListContainer>
-            <TitleDiv>Reading List</TitleDiv>
-            <StyledHr></StyledHr>
-            <ReadingListWrapper>
-              {readingList.map((book) => {
-                return (
-                  <ReadingListBookWrapper
-                    key={book.id}
-                    layoutId={book.id}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <BookCover book={book} />
-                  </ReadingListBookWrapper>
-                );
-              })}
-            </ReadingListWrapper>
-          </ReadingListContainer>
-        )}
-      </BooksContainer>
-    </AppContainer>
+          booksList={booksList}
+          handlebookListClick={handlebookListClick}
+        />
+        <ReadingListContainer
+          readingList={readingList}
+          handlereadingListClick={handlereadingListClick}
+        />
+      </div>
+    </div>
   );
 };
 

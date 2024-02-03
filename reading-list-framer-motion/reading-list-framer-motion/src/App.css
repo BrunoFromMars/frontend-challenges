@@ -1,0 +1,153 @@
+.app-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #040d12;
+  overflow: hidden;
+}
+
+.books-container {
+  box-sizing: border-box;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: row;
+
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.books-list-container-wrapper {
+  flex: 1;
+}
+
+.books-list-container {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: start;
+  align-content: start;
+  height: 100vh;
+  gap: 20px;
+
+  background-color: white;
+
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.book-list-image {
+  box-sizing: border-box;
+
+  max-width: 250px;
+  border-radius: 10px;
+}
+
+.reading-list-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+
+  min-width: 300px;
+  padding: 20px;
+  height: 100%;
+}
+
+.title-div {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  color: #5c8374;
+}
+
+.styled-hr {
+  border: none;
+  border-top: 6px dotted #183d3d;
+  width: 100%;
+}
+
+.reading-list-books {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+}
+
+.reading-list-book-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.reading-list-book-image {
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 350px;
+  border-radius: 20px;
+  box-shadow: 0px -22px 16px -16px hsl(0deg 0% 0% / 0.4);
+}
+
+.delete-button {
+  all: none;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  font-size: x-large;
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .books-list-container {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    justify-content: space-evenly;
+  }
+
+  .book-list-image {
+    max-width: 110px;
+    border-radius: 6px;
+  }
+
+  .reading-list-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+
+    min-width: 250px;
+    padding: 5px;
+  }
+
+  .reading-list-book-image {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+  }
+
+  .books-container {
+    padding: 10px 10px;
+  }
+}
